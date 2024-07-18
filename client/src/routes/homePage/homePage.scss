@@ -1,0 +1,97 @@
+@import "../../responsive.scss";
+
+.homePage {
+  display: flex;
+  height: 100%;
+
+  .textContainer {
+    flex: 3;
+
+    .wrapper {
+      padding-right: 130px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 50px;
+      height: 100%;
+
+      @include lg{
+        padding-right: 50px;
+      }
+
+      @include md{
+        padding: 0;
+      }
+
+      @include sm{
+        justify-content: flex-start;
+      }
+
+      .title {
+        font-size: 56px;
+
+        @include lg {
+          font-size: 48px;
+        }
+      }
+
+      .text{
+        font-size: 1rem; /* 18px */
+        line-height: 1.75rem; /* 28px */
+        max-width: 65ch;
+        color: #6b7280;
+      }
+
+      .boxes {
+        display: flex;
+        justify-content: space-between;
+        padding-right: 2.5em;
+        padding-left: 2.5em;
+
+        @include sm {
+          display: none;
+        }
+
+        .box {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+      
+          svg {
+            margin-bottom: 1em;
+            color: #003DA5;
+          }
+      
+          h2 {
+            font-size: 18px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
+
+  .imgContainer {
+    flex: 2;
+    background-color: #fcf5f3;
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    @include md {
+      display: none;
+    }
+
+    img {
+      width: 115%;
+      position: absolute;
+      right: 0;
+
+      @include lg {
+        width: 105%;
+      }
+    }
+  }
+}
