@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./slider.scss";
+import { ChevronLeft, ChevronRight, CircleX } from "lucide-react";
+
 
 function Slider({ images }) {
   const [imageIndex, setImageIndex] = useState(null);
@@ -25,16 +27,16 @@ function Slider({ images }) {
       {imageIndex !== null && (
         <div className="fullSlider">
           <div className="arrow" onClick={() => changeSlide("left")}>
-            <img src="/arrow.png" alt="" />
+            <ChevronLeft size={50} color="#000" strokeWidth={3} />
           </div>
           <div className="imgContainer">
             <img src={images[imageIndex]} alt="" />
           </div>
           <div className="arrow" onClick={() => changeSlide("right")}>
-            <img src="/arrow.png" className="right" alt="" />
+            <ChevronRight size={50} color="#000" strokeWidth={3} />
           </div>
           <div className="close" onClick={() => setImageIndex(null)}>
-            X
+            <CircleX size={40} color="#000" strokeWidth={2} />
           </div>
         </div>
       )}

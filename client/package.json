@@ -10,13 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "axios": "^1.7.2",
+    "dompurify": "^3.1.6",
     "lucide": "^0.408.0",
     "lucide-react": "^0.408.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-leaflet": "^4.2.1",
+    "react-quill": "^2.0.0",
     "react-router-dom": "^6.25.0",
-    "sass": "^1.77.8"
+    "sass": "^1.77.8",
+    "socket.io-client": "^4.7.5",
+    "timeago.js": "^4.0.2",
+    "zustand": "^4.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

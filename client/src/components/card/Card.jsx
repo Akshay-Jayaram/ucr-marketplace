@@ -1,11 +1,18 @@
 import { Link } from "react-router-dom";
 import "./card.scss";
+import { MessageCircle, MapPin, Save } from "lucide-react";
+
 
 function Card({ item }) {
   return (
     <div className="card">
       <Link to={`/${item.id}`} className="imageContainer">
-        <img src={item.img} alt="" />
+        {/*<img src={item.images[0]} alt="" />*/}
+        {item.images && item.images.length > 0 ? (
+          <img src={item.images[0]} alt="" />
+        ) : (
+          <img src="/default-image.png" alt="Default" />
+        )}
       </Link>
       <div className="textContainer">
         <h2 className="title">
