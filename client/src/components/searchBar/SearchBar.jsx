@@ -6,7 +6,7 @@ const types = ["buy", "rent"];
 
 function SearchBar() {
   const [query, setQuery] = useState({
-    type: "buy",
+    category: "",
     city: "",
     minPrice: 0,
     maxPrice: 0,
@@ -22,7 +22,7 @@ function SearchBar() {
 
   return (
     <div className="searchBar">
-      <div className="type">
+      {/*<div className="type">
         {types.map((type) => (
           <button
             key={type}
@@ -32,7 +32,7 @@ function SearchBar() {
             {type}
           </button>
         ))}
-      </div>
+      </div>*/}
       <form>
         <input
           type="text"
@@ -57,7 +57,7 @@ function SearchBar() {
           onChange={handleChange}
         />
         <Link
-          to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}
+          to={`/list?category=${query.category}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}
         >
           <button>
             <img src="/search.png" alt="" />

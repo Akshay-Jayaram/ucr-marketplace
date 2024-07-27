@@ -25,23 +25,15 @@ function NewPostPage() {
           price: parseInt(inputs.price),
           address: inputs.address,
           city: inputs.city,
-          bedroom: parseInt(inputs.bedroom),
-          bathroom: parseInt(inputs.bathroom),
-          type: inputs.type,
-          property: inputs.property,
+          category: inputs.category,
+          condition: inputs.condition,
           latitude: inputs.latitude,
           longitude: inputs.longitude,
           images: images,
         },
         postDetail: {
           desc: value,
-          utilities: inputs.utilities,
-          pet: inputs.pet,
-          income: inputs.income,
-          size: parseInt(inputs.size),
-          school: parseInt(inputs.school),
-          bus: parseInt(inputs.bus),
-          restaurant: parseInt(inputs.restaurant),
+          negotiable: inputs.negotiable,
         },
       });
       navigate("/" + res.data.id)
@@ -78,14 +70,6 @@ function NewPostPage() {
               <input id="city" name="city" type="text" />
             </div>
             <div className="item">
-              <label htmlFor="bedroom">Bedroom Number</label>
-              <input min={1} id="bedroom" name="bedroom" type="number" />
-            </div>
-            <div className="item">
-              <label htmlFor="bathroom">Bathroom Number</label>
-              <input min={1} id="bathroom" name="bathroom" type="number" />
-            </div>
-            <div className="item">
               <label htmlFor="latitude">Latitude</label>
               <input id="latitude" name="latitude" type="text" />
             </div>
@@ -94,64 +78,34 @@ function NewPostPage() {
               <input id="longitude" name="longitude" type="text" />
             </div>
             <div className="item">
-              <label htmlFor="type">Type</label>
-              <select name="type">
-                <option value="rent" defaultChecked>
-                  Rent
-                </option>
-                <option value="buy">Buy</option>
+              <label htmlFor="category">Product Category</label>
+              <select name="category" defaultValue="">
+                <option value="" disabled>Select the category</option>
+                <option value="furniture">Furniture</option>
+                <option value="electronics">Electronics</option>
+                <option value="transportation">Transportation</option>
+                <option value="housing">Housing</option>
+                <option value="others">Others</option>
               </select>
             </div>
             <div className="item">
-              <label htmlFor="type">Property</label>
-              <select name="property">
-                <option value="apartment">Apartment</option>
-                <option value="house">House</option>
-                <option value="condo">Condo</option>
-                <option value="land">Land</option>
+              <label htmlFor="condition">Product Condition</label>
+              <select name="condition" defaultValue="">
+                <option value="" disabled>Select the condition</option>
+                <option value="excellent">Excellent</option>
+                <option value="good">Good</option>
+                <option value="acceptable">Acceptable</option>
+              </select>
+            </div>
+            <div className="item">
+              <label htmlFor="negotiable">Price Negotiable?</label>
+              <select name="negotiable" defaultValue="">
+                <option value="" disabled>Choose an option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
               </select>
             </div>
 
-            <div className="item">
-              <label htmlFor="utilities">Utilities Policy</label>
-              <select name="utilities">
-                <option value="owner">Owner is responsible</option>
-                <option value="tenant">Tenant is responsible</option>
-                <option value="shared">Shared</option>
-              </select>
-            </div>
-            <div className="item">
-              <label htmlFor="pet">Pet Policy</label>
-              <select name="pet">
-                <option value="allowed">Allowed</option>
-                <option value="not-allowed">Not Allowed</option>
-              </select>
-            </div>
-            <div className="item">
-              <label htmlFor="income">Income Policy</label>
-              <input
-                id="income"
-                name="income"
-                type="text"
-                placeholder="Income Policy"
-              />
-            </div>
-            <div className="item">
-              <label htmlFor="size">Total Size (sqft)</label>
-              <input min={0} id="size" name="size" type="number" />
-            </div>
-            <div className="item">
-              <label htmlFor="school">School</label>
-              <input min={0} id="school" name="school" type="number" />
-            </div>
-            <div className="item">
-              <label htmlFor="bus">bus</label>
-              <input min={0} id="bus" name="bus" type="number" />
-            </div>
-            <div className="item">
-              <label htmlFor="restaurant">Restaurant</label>
-              <input min={0} id="restaurant" name="restaurant" type="number" />
-            </div>
             <button className="sendButton">Add</button>
             {error && <span>error</span>}
           </form>
@@ -164,8 +118,8 @@ function NewPostPage() {
         <UploadWidget
           uwConfig={{
             multiple: true,
-            cloudName: "lamadev",
-            uploadPreset: "estate",
+            cloudName: "dzwfm4qzj",
+            uploadPreset: "ucrmarketplace",
             folder: "posts",
           }}
           setState={setImages}

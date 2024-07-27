@@ -6,6 +6,8 @@ import DOMPurify from "dompurify";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
+import { MessageCircle, MapPin, Save, CircleCheckBig, BadgeDollarSign, List, ReceiptText } from "lucide-react";
+
 
 function SinglePage() {
   const post = useLoaderData();
@@ -37,7 +39,7 @@ function SinglePage() {
               <div className="post">
                 <h1>{post.title}</h1>
                 <div className="address">
-                  <img src="/pin.png" alt="" />
+                  <MapPin />
                   <span>{post.address}</span>
                 </div>
                 <div className="price">$ {post.price}</div>
@@ -61,36 +63,42 @@ function SinglePage() {
           <p className="title">General</p>
           <div className="listVertical">
             <div className="feature">
-              <img src="/utility.png" alt="" />
+              <List />
               <div className="featureText">
-                <span>Utilities</span>
-                {post.postDetail.utilities === "owner" ? (
-                  <p>Owner is responsible</p>
+                <span>Category</span>
+                <p style={{ textTransform: "capitalize" }}>{post.category}</p>
+              </div>
+            </div>
+            <div className="feature">
+              <ReceiptText />
+              <div className="featureText">
+                <span>Condition</span>
+                <p style={{ textTransform: "capitalize" }}>{post.condition}</p>
+              </div>
+            </div>
+            <div className="feature">
+              <BadgeDollarSign />
+              <div className="featureText">
+                <span>Price</span>
+                {post.postDetail.negotiable === "yes" ? (
+                  <p>Negotiable</p>
                 ) : (
-                  <p>Tenant is responsible</p>
+                  <p>Not Negotiable</p>
                 )}
               </div>
             </div>
             <div className="feature">
-              <img src="/pet.png" alt="" />
+              <CircleCheckBig />
               <div className="featureText">
-                <span>Pet Policy</span>
-                {post.postDetail.pet === "allowed" ? (
-                  <p>Pets Allowed</p>
+                {post.verified === true ? (
+                  <p>Verified Listing</p>
                 ) : (
-                  <p>Pets not Allowed</p>
+                  <p>Not a Verified Listing</p>
                 )}
-              </div>
-            </div>
-            <div className="feature">
-              <img src="/fee.png" alt="" />
-              <div className="featureText">
-                <span>Income Policy</span>
-                <p>{post.postDetail.income}</p>
               </div>
             </div>
           </div>
-          <p className="title">Sizes</p>
+          {/*<p className="title">Sizes</p>
           <div className="sizes">
             <div className="size">
               <img src="/size.png" alt="" />
@@ -133,14 +141,14 @@ function SinglePage() {
                 <p>{post.postDetail.restaurant}m away</p>
               </div>
             </div>
-          </div>
+          </div>*/}
           <p className="title">Location</p>
           <div className="mapContainer">
             <Map items={[post]} />
           </div>
           <div className="buttons">
             <button>
-              <img src="/chat.png" alt="" />
+              <MessageCircle />
               Send a Message
             </button>
             <button
@@ -149,8 +157,8 @@ function SinglePage() {
                 backgroundColor: saved ? "#fece51" : "white",
               }}
             >
-              <img src="/save.png" alt="" />
-              {saved ? "Place Saved" : "Save the Place"}
+              <Save />
+              {saved ? "Post Saved" : "Save the Post"}
             </button>
           </div>
         </div>

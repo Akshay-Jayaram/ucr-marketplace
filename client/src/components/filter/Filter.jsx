@@ -1,16 +1,16 @@
 import { useState } from "react";
 import "./filter.scss";
 import { useSearchParams } from "react-router-dom";
+import { Search } from "lucide-react";
+
 
 function Filter() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState({
-    type: searchParams.get("type") || "",
-    city: searchParams.get("city") || "",
-    property: searchParams.get("property") || "",
+    category: searchParams.get("category") || "",
+    condition: searchParams.get("condition") || "",
     minPrice: searchParams.get("minPrice") || "",
     maxPrice: searchParams.get("maxPrice") || "",
-    bedroom: searchParams.get("bedroom") || "",
   });
 
   const handleChange = (e) => {
@@ -27,9 +27,9 @@ function Filter() {
   return (
     <div className="filter">
       <h1>
-        Search results for <b>{searchParams.get("city")}</b>
+        Search results for <b>{searchParams.get("category")}</b>
       </h1>
-      <div className="top">
+      {/*<div className="top">
         <div className="item">
           <label htmlFor="city">Location</label>
           <input
@@ -41,34 +41,37 @@ function Filter() {
             defaultValue={query.city}
           />
         </div>
-      </div>
+      </div>*/}
       <div className="bottom">
         <div className="item">
-          <label htmlFor="type">Type</label>
+          <label htmlFor="category">Category</label>
           <select
-            name="type"
-            id="type"
+            name="category"
+            id="category"
             onChange={handleChange}
-            defaultValue={query.type}
+            defaultValue={query.category}
           >
             <option value="">any</option>
-            <option value="buy">Buy</option>
-            <option value="rent">Rent</option>
+            <option value="furniture">Furniture</option>
+            <option value="electronics">Electronics</option>
+            <option value="transportation">Transportation</option>
+            <option value="housing">Housing</option>
+            <option value="others">Others</option>
+
           </select>
         </div>
         <div className="item">
-          <label htmlFor="property">Property</label>
+          <label htmlFor="condition">Condition</label>
           <select
-            name="property"
-            id="property"
+            name="condition"
+            id="condition"
             onChange={handleChange}
-            defaultValue={query.property}
+          //defaultValue={query.condition}
           >
             <option value="">any</option>
-            <option value="apartment">Apartment</option>
-            <option value="house">House</option>
-            <option value="condo">Condo</option>
-            <option value="land">Land</option>
+            <option value="excellent">Excellent</option>
+            <option value="good">Good</option>
+            <option value="acceptable">Acceptable</option>
           </select>
         </div>
         <div className="item">
@@ -93,19 +96,9 @@ function Filter() {
             defaultValue={query.maxPrice}
           />
         </div>
-        <div className="item">
-          <label htmlFor="bedroom">Bedroom</label>
-          <input
-            type="text"
-            id="bedroom"
-            name="bedroom"
-            placeholder="any"
-            onChange={handleChange}
-            defaultValue={query.bedroom}
-          />
-        </div>
+
         <button onClick={handleFilter}>
-          <img src="/search.png" alt="" />
+          <Search />
         </button>
       </div>
     </div>

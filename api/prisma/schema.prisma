@@ -20,12 +20,11 @@ model Post {
   images     String[]
   address    String
   city       String
-  bedroom    Int
-  bathroom   Int
+  verified   Boolean @default(false)
   latitude   String
   longitude  String
-  type       Type
-  property   Property
+  category   Category
+  condition  Condition
   createdAt  DateTime    @default(now())
   user       User        @relation(fields: [userId], references: [id])
   userId     String      @db.ObjectId
@@ -33,28 +32,25 @@ model Post {
   savedPosts SavedPost[]
 }
 
-enum Type {
-  buy
-  rent
+enum Category {
+  furniture
+  electronics
+  transportation
+  housing
+  others
 }
 
-enum Property {
-  apartment
-  house
-  condo
-  land
+enum Condition {
+  excellent
+  good
+  acceptable
 }
+
 
 model PostDetail {
   id         String  @id @default(auto()) @map("_id") @db.ObjectId
   desc       String
-  utilities  String?
-  pet        String?
-  income     String?
-  size       Int?
-  school     Int?
-  bus        Int?
-  restaurant Int?
+  negotiable String
   post       Post    @relation(fields: [postId], references: [id])
   postId     String  @unique @db.ObjectId
 }

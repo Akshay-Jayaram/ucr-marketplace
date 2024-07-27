@@ -19,27 +19,25 @@ function Card({ item }) {
           <Link to={`/${item.id}`}>{item.title}</Link>
         </h2>
         <p className="address">
-          <img src="/pin.png" alt="" />
+          <MapPin />
           <span>{item.address}</span>
         </p>
         <p className="price">$ {item.price}</p>
         <div className="bottom">
           <div className="features">
             <div className="feature">
-              <img src="/bed.png" alt="" />
-              <span>{item.bedroom} bedroom</span>
+              <span style={{ textTransform: "capitalize" }}>{item.category}</span>
             </div>
             <div className="feature">
-              <img src="/bath.png" alt="" />
-              <span>{item.bathroom} bathroom</span>
+              <span style={{ textTransform: "capitalize" }}>{item.condition} condition</span>
             </div>
           </div>
           <div className="icons">
             <div className="icon">
-              <img src="/save.png" alt="" />
+              <Save size={20} />
             </div>
             <div className="icon">
-              <img src="/chat.png" alt="" />
+              <MessageCircle size={20} />
             </div>
           </div>
         </div>
