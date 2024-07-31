@@ -3,6 +3,8 @@ import "./navbar.scss";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useNotificationStore } from "../../lib/notificationStore";
+import { Menu } from "lucide-react";
+
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -21,7 +23,7 @@ function Navbar() {
           <img src="/logo.svg" alt="" />
           {/*<span>LamaEstate</span>*/}
         </a>
-        <a href="/">Buy</a>
+        <a href="/list">Buy</a>
         <a href="/">Events</a>
       </div>
       <div className="right">
@@ -46,9 +48,7 @@ function Navbar() {
           </>
         )}
         <div className="menuIcon">
-          <img
-            src="/menu.png"
-            alt=""
+          <Menu
             onClick={() => setOpen((prev) => !prev)}
           />
         </div>

@@ -1,9 +1,6 @@
-@import "../../responsive.scss";
-
 .searchBar {
   .type {
-
-
+    display: flex;
     button {
       padding: 16px 36px;
       border: 1px solid #999;
@@ -11,12 +8,10 @@
       cursor: pointer;
       background-color: white;
       text-transform: capitalize;
-
       &.active {
         background-color: black;
         color: white;
       }
-
       &:first-child {
         border-top-left-radius: 5px;
         border-right: none;
@@ -28,71 +23,88 @@
     }
   }
 
-  form {
-    border: 1px solid #999;
+  .categories {
     display: flex;
-    justify-content: space-between;
-    height: 64px;
-    gap: 5px;
+    justify-content: space-around;
+    background-color: #f5f5f5;
+    padding: 5px;
+    border-radius: 0 5px 5px 5px;
 
-    @include sm {
-      flex-direction: column;
-      border: none;
-    }
 
-    input {
-      border: none;
-      padding: 0px 10px;
-      width: 200px;
-
-      @include lg {
-        padding: 0px 5px;
-
-        &:nth-child(2),
-        &:nth-child(3) {
-          width: 140px;
-        }
-      }
-      @include md {
-        width: 200px;
-        &:nth-child(2),
-        &:nth-child(3) {
-          width: 200px;
-        }
-      }
-
-      @include sm{
-        width: auto;
-        border: 1px solid #999;
-        padding: 20px;
-        &:nth-child(2),
-        &:nth-child(3) {
-          width: auto;
-        }
-      }
-    }
-
-    a{
-      flex: 1;
-      background-color: #fece51;
+    .categoryButton {
       display: flex;
       align-items: center;
       justify-content: center;
+      background-color: #f5f5f5;
+      border: none;
+      padding: 20px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      overflow: hidden;
 
-      button {
-        border: none;
-        cursor: pointer;
-        background-color: #fece51;
-        
-        @include sm{
-          padding: 10px;
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        //transition: all 0.3s ease;
+      }
+
+      .hoverContent {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        text-align: center;
+        .categoryName {
+          font-weight: bold;
+          display: block;
+          text-transform: capitalize;
         }
-        
-        img {
-          width: 24px;
-          height: 24px;
+        .categoryDescription {
+          font-size: 0.9em;
+          color: #666;
         }
       }
+
+      &.hovered {
+        flex: 3;
+        .icon {
+          opacity: 0;
+        }
+        .hoverContent {
+          opacity: 1;
+        }
+      }
+
+      &:not(.hovered) {
+        flex: 1;
+        margin: 0 5px;
+        .hoverContent {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .sellForm {
+    background-color: #f5f5f5;
+    padding: 12px;        
+    border-radius: 0 5px 5px 5px;
+
+    button {
+      padding: 16px 36px;
+      background-color:transparent;
+      border: none;
+      cursor: pointer;
+      
+    }
+    button:hover {
+      //background-color: #F1AB02; 
+      color: #003DA5; 
+      transition: background-color 0.3s ease, color 0.3s ease; 
     }
   }
 }

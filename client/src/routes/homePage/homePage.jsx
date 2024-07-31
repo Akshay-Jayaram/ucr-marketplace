@@ -38,7 +38,7 @@ function HomePage() {
         </div>
       </div>
       <div className="imgContainer">
-        <img src="/bg2.png" alt="" />
+        <img src="/bg.png" alt="" />
       </div>
     </div>
   );

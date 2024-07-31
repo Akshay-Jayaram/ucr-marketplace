@@ -1,3 +1,5 @@
+@import "../../responsive.scss";
+
 .login {
   height: 100%;
   display: flex;
@@ -24,13 +26,17 @@
         padding: 20px;
         border-radius: 5px;
         border: none;
-        background-color: teal;
+        background-color: #093250;
         color: white;
         font-weight: bold;
         cursor: pointer;
 
+        &:hover{
+          background-color: #0d456d;
+        }
+
         &:disabled{
-          background-color: #BED9D8;
+          background-color: #daeefc;
           cursor: not-allowed;
         }
       }
@@ -54,8 +60,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    //position: relative;
+
+    @include md {
+      display: none;
+    }
+
     img {
-      width: 100%;
+      width: 120%;
+      //position: absolute;
+      right: 0;
+
+      @include lg {
+        width: 105%;
+      }
     }
   }
 }
