@@ -85,13 +85,13 @@ function Chat({ chats }) {
               backgroundColor:
                 c.seenBy.includes(currentUser.id) || chat?.id === c.id
                   ? "white"
-                  : "#fecd514e",
+                  : "#eef8ff",
             }}
             onClick={() => handleOpenChat(c.id, c.receiver)}
           >
             <img src={c.receiver.avatar || "/noavatar.jpg"} alt="" />
             <span>{c.receiver.username}</span>
-            <p>{c.lastMessage}</p>
+            <p>{c.lastMessage && c.lastMessage.length > 35 ? `${c.lastMessage.slice(0, 35)}...` : c.lastMessage}</p>
           </div>
         ))}
       </div>

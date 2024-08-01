@@ -3,9 +3,12 @@ import Slider from "../../components/slider/Slider";
 import Map from "../../components/map/Map";
 import { useNavigate, useLoaderData } from "react-router-dom";
 import DOMPurify from "dompurify";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { SocketContext } from "../../context/SocketContext";
 import apiRequest from "../../lib/apiRequest";
+import Chat from "../../components/chat/Chat";
+import { useNotificationStore } from "../../lib/notificationStore";
 import { MessageCircle, MapPin, Save, CircleCheckBig, BadgeDollarSign, List, ReceiptText } from "lucide-react";
 
 
@@ -13,7 +16,73 @@ function SinglePage() {
   const post = useLoaderData();
   const [saved, setSaved] = useState(post.isSaved);
   const { currentUser } = useContext(AuthContext);
+  const { socket } = useContext(SocketContext);
+  const [chat, setChat] = useState(null);
   const navigate = useNavigate();
+  const recieverID = post.userId;
+  const decrease = useNotificationStore((state) => state.decrease);
+
+  const handelSendMessage = async () => {
+    try {
+      await apiRequest.post("/chats", { receiverId: post.userId })
+      navigate("/profile")
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  {/*
+  useEffect(() => {
+    const fetchChats = async () => {
+      try {
+        const res = await apiRequest.get("/chats");
+        const chats = res.data;
+        const existingChat = chats.find(
+          (chat) =>
+            chat.userIDs.includes(currentUser.id) && chat.userIDs.includes(recieverID)
+        );
+        if (existingChat) {
+          setChat(existingChat);
+        } else {
+          const res = await apiRequest.post("/chats", {
+            userIDs: [currentUser.id, recieverID],
+          });
+          setChat(res.data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchChats();
+  }, [currentUser.id, recieverID]);
+
+  const handleChat = async () => {
+    if (!currentUser) {
+      navigate("/login");
+    } else {
+      if (chat) {
+        handleOpenChat(chat.id, post.user);
+      } else {
+        const res = await apiRequest.post("/chats", {
+          userIDs: [currentUser.id, recieverID],
+        });
+        setChat(res.data);
+        handleOpenChat(res.data.id, post.user);
+      }
+    }
+  };
+
+  const handleOpenChat = async (id, receiver) => {
+    try {
+      const res = await apiRequest.get("/chats/" + id);
+      if (!res.data.seenBy.includes(currentUser.id)) {
+        decrease();
+      }
+      setChat({ ...res.data, receiver });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  */}
 
   const handleSave = async () => {
     if (!currentUser) {
@@ -147,7 +216,8 @@ function SinglePage() {
             <Map items={[post]} />
           </div>
           <div className="buttons">
-            <button>
+            <button
+              onClick={handelSendMessage}>
               <MessageCircle />
               Send a Message
             </button>
