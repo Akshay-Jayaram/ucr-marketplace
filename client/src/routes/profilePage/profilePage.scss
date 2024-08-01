@@ -36,9 +36,14 @@
 
         button{
           padding: 12px 24px;
-          background-color: #fece51;
+          background-color: #474973;
+          color: white;
+          border-radius: 5px;
           cursor: pointer;
           border: none;
+          &:hover{
+            background-color: #7678a8;
+          }
         }
       }
 

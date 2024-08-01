@@ -86,9 +86,11 @@ nav {
 
       .profile{
         padding: 12px 24px;
-        background-color: #F1AB02;
+        background-color: #474973;
+        color: white;
         cursor: pointer;
         border: none;
+        border-radius: 5px;
         position: relative;
         
         .notification{
@@ -109,7 +111,9 @@ nav {
     }
 
     .register {
-      background-color: #F1AB02;
+      background-color: #474973;
+      color: white;
+      border-radius: 5px;
     }
 
     .menuIcon {

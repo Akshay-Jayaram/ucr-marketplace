@@ -154,7 +154,8 @@ function SinglePage() {
             <button
               onClick={handleSave}
               style={{
-                backgroundColor: saved ? "#fece51" : "white",
+                backgroundColor: saved ? "#093250" : "white",
+                color: saved ? "white" : "black",
               }}
             >
               <Save />

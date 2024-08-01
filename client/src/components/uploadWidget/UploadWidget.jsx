@@ -52,7 +52,7 @@ function UploadWidget({ uwConfig, setPublicId, setState }) {
     <CloudinaryScriptContext.Provider value={{ loaded }}>
       <button
         id="upload_widget"
-        className="cloudinary-button custom-button"
+        className="cloudinary-button bg-[#093250] custom-button"
         onClick={initializeCloudinaryWidget}
       >
         Upload Image
