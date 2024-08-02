@@ -1,10 +1,12 @@
 import { useContext, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import "./chat.scss";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
 import { format } from "timeago.js";
 import { SocketContext } from "../../context/SocketContext";
 import { useNotificationStore } from "../../lib/notificationStore";
+import { MoveRight } from "lucide-react";
 
 function Chat({ chats }) {
   const [chat, setChat] = useState(null);
@@ -89,9 +91,14 @@ function Chat({ chats }) {
             }}
             onClick={() => handleOpenChat(c.id, c.receiver)}
           >
-            <img src={c.receiver.avatar || "/noavatar.jpg"} alt="" />
-            <span>{c.receiver.username}</span>
-            <p>{c.lastMessage && c.lastMessage.length > 35 ? `${c.lastMessage.slice(0, 35)}...` : c.lastMessage}</p>
+            <img src={c.postImage || "/noavatar.jpg"} alt="" />
+            <div class="message-container">
+              <div class="message-header">
+                <span class="username">{c.receiver.username}</span>|
+                <p class="post-title">{c.postTitle.length > 35 ? `${c.postTitle.slice(0, 35)}...` : c.postTitle}</p>
+              </div>
+              <p class="last-message">{c.lastMessage && c.lastMessage.length > 45 ? `${c.lastMessage.slice(0, 45)}...` : c.lastMessage}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -99,12 +106,18 @@ function Chat({ chats }) {
         <div className="chatBox">
           <div className="top">
             <div className="user">
-              <img src={chat.receiver.avatar || "noavatar.jpg"} alt="" />
-              {chat.receiver.username}
+              <img src={chat.postImage || "noavatar.jpg"} alt="" />
+              <span>{chat.receiver.username}</span>
+              <span>|</span>
+              <p>{chat.postTitle.length > 35 ? `${chat.postTitle.slice(0, 35)}...` : chat.postTitle}</p>
             </div>
+
             <span className="close" onClick={() => setChat(null)}>
               X
             </span>
+          </div>
+          <div className="middle">
+            <Link to={`/${chat.postId}`}>Go to the listing <MoveRight size={12} /></Link>
           </div>
           <div className="center">
             {chat.messages.map((message) => (

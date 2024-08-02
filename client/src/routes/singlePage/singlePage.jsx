@@ -23,11 +23,21 @@ function SinglePage() {
   const decrease = useNotificationStore((state) => state.decrease);
 
   const handelSendMessage = async () => {
-    try {
-      await apiRequest.post("/chats", { receiverId: post.userId })
-      navigate("/profile")
-    } catch (error) {
-      console.log(error);
+    if (!currentUser) {
+      navigate("/login");
+    } else {
+      try {
+        /*const existingChat = await apiRequest.get(`/check?receiverId=${post.userId}&postId=${post.id}`);
+
+        if (existingChat.data.exists) {
+          navigate("/profile");
+        } else {*/
+        await apiRequest.post("/chats", { receiverId: post.userId, postId: post.id });
+        navigate("/profile");
+        //}
+      } catch (error) {
+        console.log(error);
+      }
     }
   }
   {/*
@@ -167,57 +177,15 @@ function SinglePage() {
               </div>
             </div>
           </div>
-          {/*<p className="title">Sizes</p>
-          <div className="sizes">
-            <div className="size">
-              <img src="/size.png" alt="" />
-              <span>{post.postDetail.size} sqft</span>
-            </div>
-            <div className="size">
-              <img src="/bed.png" alt="" />
-              <span>{post.bedroom} beds</span>
-            </div>
-            <div className="size">
-              <img src="/bath.png" alt="" />
-              <span>{post.bathroom} bathroom</span>
-            </div>
-          </div>
-          <p className="title">Nearby Places</p>
-          <div className="listHorizontal">
-            <div className="feature">
-              <img src="/school.png" alt="" />
-              <div className="featureText">
-                <span>School</span>
-                <p>
-                  {post.postDetail.school > 999
-                    ? post.postDetail.school / 1000 + "km"
-                    : post.postDetail.school + "m"}{" "}
-                  away
-                </p>
-              </div>
-            </div>
-            <div className="feature">
-              <img src="/pet.png" alt="" />
-              <div className="featureText">
-                <span>Bus Stop</span>
-                <p>{post.postDetail.bus}m away</p>
-              </div>
-            </div>
-            <div className="feature">
-              <img src="/fee.png" alt="" />
-              <div className="featureText">
-                <span>Restaurant</span>
-                <p>{post.postDetail.restaurant}m away</p>
-              </div>
-            </div>
-          </div>*/}
+
           <p className="title">Location</p>
           <div className="mapContainer">
             <Map items={[post]} />
           </div>
           <div className="buttons">
             <button
-              onClick={handelSendMessage}>
+              onClick={handelSendMessage}
+              disabled={post.userId === currentUser.id}>
               <MessageCircle />
               Send a Message
             </button>

@@ -13,5 +13,6 @@ router.get("/", verifyToken, getChats);
 router.get("/:id", verifyToken, getChat);
 router.post("/", verifyToken, addChat);
 router.put("/read/:id", verifyToken, readChat);
+router.get('/check', verifyToken, checkChatExists);
 
 export default router;

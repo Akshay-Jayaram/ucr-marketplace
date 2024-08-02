@@ -74,10 +74,35 @@ export const getChat = async (req, res) => {
 
 export const addChat = async (req, res) => {
   const tokenUserId = req.userId;
+  const { receiverId, postId } = req.body;
+
   try {
+    const existingChat = await prisma.chat.findFirst({
+      where: {
+        userIDs: { hasEvery: [tokenUserId, receiverId] },
+        postId: postId,
+      },
+    });
+
+    if (existingChat) {
+      return res.status(400).json({ message: "Chat already exists for this post and users!" });
+    }
+
+    const post = await prisma.post.findUnique({
+      where: { id: postId },
+      select: { title: true, images: true },
+    });
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found!" });
+    }
+
     const newChat = await prisma.chat.create({
       data: {
-        userIDs: [tokenUserId, req.body.receiverId],
+        userIDs: [tokenUserId, receiverId],
+        postId: postId,
+        postTitle: post.title,
+        postImage: post.images[0],
       },
     });
     res.status(200).json(newChat);
@@ -87,10 +112,11 @@ export const addChat = async (req, res) => {
   }
 };
 
+
 export const readChat = async (req, res) => {
   const tokenUserId = req.userId;
 
-  
+
   try {
     const chat = await prisma.chat.update({
       where: {
@@ -109,5 +135,28 @@ export const readChat = async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Failed to read chat!" });
+  }
+};
+
+export const checkChatExists = async (req, res) => {
+  const tokenUserId = req.userId;
+  const { receiverId, postId } = req.query;
+
+  try {
+    const existingChat = await prisma.chat.findFirst({
+      where: {
+        userIDs: { hasEvery: [tokenUserId, receiverId] },
+        postId: postId,
+      },
+    });
+
+    if (existingChat) {
+      return res.status(200).json({ exists: true });
+    } else {
+      return res.status(200).json({ exists: false });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Failed to check chat existence!" });
   }
 };
