@@ -9,11 +9,11 @@ export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    setSocket(io("http://localhost:4000"));
+    setSocket(io(import.meta.env.VITE_SOCKET_URL));
   }, []);
 
   useEffect(() => {
-  currentUser && socket?.emit("newUser", currentUser.id);
+    currentUser && socket?.emit("newUser", currentUser.id);
   }, [currentUser, socket]);
 
   return (

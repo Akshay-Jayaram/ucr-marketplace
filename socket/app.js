@@ -1,8 +1,12 @@
 import { Server } from "socket.io";
+import dotenv from 'dotenv';
+
+dotenv.config();
+console.log('CLIENT_URL:', process.env.CLIENT_URL);
 
 const io = new Server({
     cors: {
-        origin: "http://localhost:5173",
+        origin: process.env.CLIENT_URL,
     },
 });
 
@@ -24,18 +28,29 @@ const getUser = (userId) => {
 };
 
 io.on("connection", (socket) => {
+    console.log("A user connected");
+
     socket.on("newUser", (userId) => {
         addUser(userId, socket.id);
+        console.log(`User added: ${userId}`);
     });
 
     socket.on("sendMessage", ({ receiverId, data }) => {
         const receiver = getUser(receiverId);
-        io.to(receiver.socketId).emit("getMessage", data);
+        if (receiver) {
+            io.to(receiver.socketId).emit("getMessage", data);
+        } else {
+            console.log(`User with ID ${receiverId} is not online`);
+        }
     });
 
     socket.on("disconnect", () => {
+        console.log("A user disconnected");
         removeUser(socket.id);
     });
 });
 
-io.listen("4000");
+const PORT = process.env.PORT || 4000;
+io.listen(PORT, () => {
+    console.log(`Socket server is running on port ${PORT}`);
+});

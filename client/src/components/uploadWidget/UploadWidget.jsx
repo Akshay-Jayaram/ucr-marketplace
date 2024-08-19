@@ -28,8 +28,15 @@ function UploadWidget({ uwConfig, setPublicId, setState }) {
 
   const initializeCloudinaryWidget = () => {
     if (loaded) {
+      const widgetConfig = {
+        ...uwConfig,
+        sources: ["local"], // Only allow "My Files" uploads
+        maxFiles: 4, // Limit the number of files to 4
+        multiple: true,
+      };
+
       var myWidget = window.cloudinary.createUploadWidget(
-        uwConfig,
+        widgetConfig,
         (error, result) => {
           if (!error && result && result.event === "success") {
             console.log("Done! Here is the image info: ", result.info);
