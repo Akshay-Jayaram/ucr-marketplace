@@ -27,16 +27,16 @@ function SinglePage() {
       navigate("/login");
     } else {
       try {
-        /*const existingChat = await apiRequest.get(`/check?receiverId=${post.userId}&postId=${post.id}`);
-
-        if (existingChat.data.exists) {
+        const response = await apiRequest.post("/chats", { receiverId: post.userId, postId: post.id });
+        if (response.status === 200) {
           navigate("/profile");
-        } else {*/
-        await apiRequest.post("/chats", { receiverId: post.userId, postId: post.id });
-        navigate("/profile");
-        //}
+        }
       } catch (error) {
-        console.log(error);
+        if (error.response && error.response.status === 400 && error.response.data.message === "Chat already exists for this post and users!") {
+          navigate("/profile");
+        } else {
+          console.log(error);
+        }
       }
     }
   }

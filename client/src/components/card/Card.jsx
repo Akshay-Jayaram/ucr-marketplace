@@ -1,9 +1,32 @@
 import { Link } from "react-router-dom";
 import "./card.scss";
 import { MessageCircle, MapPin, Save } from "lucide-react";
+import { useNavigate, useLoaderData } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import apiRequest from "../../lib/apiRequest";
 
 
 function Card({ item }) {
+  const post = useLoaderData();
+  const { currentUser } = useContext(AuthContext);
+  const [saved, setSaved] = useState(post.isSaved);
+
+
+  const handleSave = async () => {
+    if (!currentUser) {
+      navigate("/login");
+    }
+    // AFTER REACT 19 UPDATE TO USEOPTIMISTIK HOOK
+    setSaved((prev) => !prev);
+    try {
+      await apiRequest.post("/users/save", { postId: item.id });
+    } catch (err) {
+      console.log(err);
+      setSaved((prev) => !prev);
+    }
+  };
+
   return (
     <div className="card">
       <Link to={`/${item.id}`} className="imageContainer">
@@ -33,12 +56,15 @@ function Card({ item }) {
             </div>
           </div>
           <div className="icons">
-            <div className="icon">
+            <button
+              className="icon"
+              //onClick={handleSave}
+              style={{
+                backgroundColor: saved ? "#093250" : "white",
+                color: saved ? "white" : "black",
+              }}>
               <Save size={20} />
-            </div>
-            <div className="icon">
-              <MessageCircle size={20} />
-            </div>
+            </button>
           </div>
         </div>
       </div>

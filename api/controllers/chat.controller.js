@@ -85,7 +85,7 @@ export const addChat = async (req, res) => {
     });
 
     if (existingChat) {
-      return res.status(400).json({ message: "Chat already exists for this post and users!" });
+      return res.status(400).json({ message: "Chat already exists for this post and users!", chatId: existingChat.id });
     }
 
     const post = await prisma.post.findUnique({
@@ -138,25 +138,4 @@ export const readChat = async (req, res) => {
   }
 };
 
-export const checkChatExists = async (req, res) => {
-  const tokenUserId = req.userId;
-  const { receiverId, postId } = req.query;
 
-  try {
-    const existingChat = await prisma.chat.findFirst({
-      where: {
-        userIDs: { hasEvery: [tokenUserId, receiverId] },
-        postId: postId,
-      },
-    });
-
-    if (existingChat) {
-      return res.status(200).json({ exists: true });
-    } else {
-      return res.status(200).json({ exists: false });
-    }
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({ message: "Failed to check chat existence!" });
-  }
-};

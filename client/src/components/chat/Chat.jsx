@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./chat.scss";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
@@ -12,6 +12,8 @@ function Chat({ chats }) {
   const [chat, setChat] = useState(null);
   const { currentUser } = useContext(AuthContext);
   const { socket } = useContext(SocketContext);
+  //const location = useLocation();
+  //const chatIdFromState = location.state?.chatId
 
   const messageEndRef = useRef();
 
@@ -79,7 +81,7 @@ function Chat({ chats }) {
     <div className="chat">
       <div className="messages">
         <h1>Messages</h1>
-        {chats?.map((c) => (
+        {chats?.slice().reverse().map((c) => (
           <div
             className="message"
             key={c.id}
@@ -92,12 +94,12 @@ function Chat({ chats }) {
             onClick={() => handleOpenChat(c.id, c.receiver)}
           >
             <img src={c.postImage || "/noavatar.jpg"} alt="" />
-            <div class="message-container">
-              <div class="message-header">
-                <span class="username">{c.receiver.username}</span>|
-                <p class="post-title">{c.postTitle.length > 35 ? `${c.postTitle.slice(0, 35)}...` : c.postTitle}</p>
+            <div className="message-container">
+              <div className="message-header">
+                <span className="username">{c.receiver.username}</span>|
+                <p className="post-title">{c.postTitle.length > 35 ? `${c.postTitle.slice(0, 35)}...` : c.postTitle}</p>
               </div>
-              <p class="last-message">{c.lastMessage && c.lastMessage.length > 45 ? `${c.lastMessage.slice(0, 45)}...` : c.lastMessage}</p>
+              <p className="last-message">{c.lastMessage && c.lastMessage.length > 45 ? `${c.lastMessage.slice(0, 45)}...` : c.lastMessage}</p>
             </div>
           </div>
         ))}
