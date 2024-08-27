@@ -11,7 +11,7 @@ function Map({ items }) {
           ? [items[0].latitude, items[0].longitude]
           : [33.953350, -117.396156]
       }
-      zoom={7}
+      zoom={9}
       scrollWheelZoom={false}
       className="map"
     >

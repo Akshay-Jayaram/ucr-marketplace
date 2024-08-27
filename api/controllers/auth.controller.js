@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import prisma from "../lib/prisma.js";
 
@@ -9,8 +9,6 @@ export const register = async (req, res) => {
     // HASH THE PASSWORD
 
     const hashedPassword = await bcrypt.hash(password, 10);
-
-    console.log(hashedPassword);
 
     // CREATE A NEW USER AND SAVE TO DB
     const newUser = await prisma.user.create({
@@ -69,8 +67,11 @@ export const login = async (req, res) => {
     res
       .cookie("token", token, {
         httpOnly: true,
-        // secure:true,
         maxAge: age,
+        domain: 'ucrmarketplace.com',
+        sameSite: 'none',
+        secure: true,
+        path: '/'
       })
       .status(200)
       .json(userInfo);
