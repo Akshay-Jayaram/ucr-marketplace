@@ -55,7 +55,7 @@ function Card({ item }) {
               <span style={{ textTransform: "capitalize" }}>{item.condition} condition</span>
             </div>
           </div>
-          <div className="icons">
+          {/*<div className="icons">
             <button
               className="icon"
               //onClick={handleSave}
@@ -65,7 +65,7 @@ function Card({ item }) {
               }}>
               <Save size={20} />
             </button>
-          </div>
+          </div>*/}
         </div>
       </div>
     </div>

@@ -43,7 +43,7 @@ function Register() {
           <input name="email" type="text" placeholder="Email" />
           <input name="password" type="password" placeholder="Password" />
           <button disabled={isLoading}>Register</button>
-          {error && <span>{error}</span>}
+          {error && <pre>{error}</pre>}
           <Link to="/login">Do you have an account?</Link>
         </form>
       </div>

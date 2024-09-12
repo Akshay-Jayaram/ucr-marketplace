@@ -1,10 +1,22 @@
+@import "../../responsive.scss";
+
 .newPostPage {
   height: 100%;
   display: flex;
 
+  @include md{
+    flex-direction: column;
+    overflow: scroll;
+  }
+
   .formContainer {
     flex: 3;
     overflow: scroll;
+
+    @include md{
+      flex:none;
+      height: max-content;
+    }
 
     .wrapper {
       margin: 30px 50px 100px 0px;
@@ -70,6 +82,11 @@
     gap: 20px;
     align-items: center;
     justify-content: center;
+
+    @include md{
+      flex:none;
+      height: 200px;
+    }
 
     img {
       width: 50%;

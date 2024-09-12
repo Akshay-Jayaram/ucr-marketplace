@@ -1,7 +1,7 @@
 import "./singlePage.scss";
 import Slider from "../../components/slider/Slider";
 import Map from "../../components/map/Map";
-import { useNavigate, useLoaderData } from "react-router-dom";
+import { useNavigate, useLoaderData, Navigate } from "react-router-dom";
 import DOMPurify from "dompurify";
 import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -9,7 +9,7 @@ import { SocketContext } from "../../context/SocketContext";
 import apiRequest from "../../lib/apiRequest";
 import Chat from "../../components/chat/Chat";
 import { useNotificationStore } from "../../lib/notificationStore";
-import { MessageCircle, MapPin, Save, CircleCheckBig, BadgeDollarSign, List, ReceiptText } from "lucide-react";
+import { MessageCircle, MapPin, Save, CircleCheckBig, BadgeDollarSign, List, ReceiptText, Truck } from "lucide-react";
 
 
 function SinglePage() {
@@ -21,6 +21,10 @@ function SinglePage() {
   const navigate = useNavigate();
   const recieverID = post.userId;
   const decrease = useNotificationStore((state) => state.decrease);
+
+  if (!currentUser) {
+    return <Navigate to="/login" replace />;
+  }
 
   const handelSendMessage = async () => {
     if (!currentUser) {
@@ -174,6 +178,13 @@ function SinglePage() {
                 ) : (
                   <p>Not a Verified Listing</p>
                 )}
+              </div>
+            </div>
+            <div className="feature">
+              <Truck />
+              <div className="featureText">
+                <span>Transportation</span>
+                <p style={{ textTransform: "capitalize" }}><a href="https://forms.gle/SMMBcoxyHK9qTz7s9" target="_blank" rel="noopener noreferrer">Contact us</a> for Transportation</p>
               </div>
             </div>
           </div>

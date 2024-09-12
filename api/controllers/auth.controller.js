@@ -6,8 +6,28 @@ export const register = async (req, res) => {
   const { fullname, username, email, password } = req.body;
 
   try {
-    // HASH THE PASSWORD
+    if (!email.endsWith('@ucr.edu')) {
+      return res.status(400).json({ message: "Please use a valid @ucr.edu email address." });
+    }
 
+    // Check if the username is already in use
+    const existingUsername = await prisma.user.findUnique({ where: { username } });
+    if (existingUsername) {
+      return res.status(400).json({ message: "This username is already taken." });
+    }
+
+    // Check if the email is already in use
+    const existingUser = await prisma.user.findUnique({ where: { email } });
+    if (existingUser) {
+      return res.status(400).json({ message: "This email is already registered. \nContact us to change the password" });
+    }
+
+    // Check password length
+    if (password.length < 6) {
+      return res.status(400).json({ message: "Password must be at least 6 characters long." });
+    }
+
+    // HASH THE PASSWORD
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // CREATE A NEW USER AND SAVE TO DB

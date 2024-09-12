@@ -33,6 +33,9 @@
         @include lg {
           font-size: 48px;
         }
+        @include sm {
+          margin-top: 20px;
+        }
       }
 
       .text{
@@ -49,7 +52,7 @@
         padding-left: 2.5em;
 
         @include sm {
-          display: none;
+          //display: none;
         }
 
         .box {

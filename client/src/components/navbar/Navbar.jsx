@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./navbar.scss";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
@@ -10,7 +11,11 @@ function Navbar() {
   const [open, setOpen] = useState(false);
 
   const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  const handleImageClick = () => {
+    navigate('/profile');
+  };
   const fetch = useNotificationStore((state) => state.fetch);
   const number = useNotificationStore((state) => state.number);
 
@@ -24,7 +29,7 @@ function Navbar() {
           {/*<span>R'CART</span>*/}
         </a>
         <a href="/list">Buy</a>
-        <a href="/">Events</a>
+        <a href="https://forms.gle/SMMBcoxyHK9qTz7s9" target="_blank" rel="noopener noreferrer">Contact Us</a>
       </div>
       <div className="right">
         {currentUser ? (
@@ -32,6 +37,7 @@ function Navbar() {
             <img
               src={currentUser.avatar || "/noavatar.jpg"}
               alt=""
+              onClick={handleImageClick}
             />
             <span>{currentUser.username}</span>
             <Link to="/profile" className="profile">
@@ -53,10 +59,10 @@ function Navbar() {
           />
         </div>
         <div className={open ? "menu active" : "menu"}>
-          <a href="/">Buy</a>
-          <a href="/">Events</a>
-          <a href="/">Sign in</a>
-          <a href="/">Sign up</a>
+          <a href="/list">Buy</a>
+          <a href="https://forms.gle/SMMBcoxyHK9qTz7s9" target="_blank" rel="noopener noreferrer">Contact Us</a>
+          <a href="/login">Sign in</a>
+          <a href="/register">Sign up</a>
         </div>
       </div>
     </nav>

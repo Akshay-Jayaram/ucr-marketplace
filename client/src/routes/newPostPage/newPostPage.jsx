@@ -27,8 +27,8 @@ function NewPostPage() {
           city: inputs.city,
           category: inputs.category,
           condition: inputs.condition,
-          latitude: inputs.latitude,
-          longitude: inputs.longitude,
+          latitude: "33.9737",
+          longitude: "-117.3281",
           images: images,
         },
         postDetail: {
@@ -69,14 +69,14 @@ function NewPostPage() {
               <label htmlFor="city">City</label>
               <input id="city" name="city" type="text" />
             </div>
-            <div className="item">
+            {/*<div className="item">
               <label htmlFor="latitude">Latitude</label>
               <input id="latitude" name="latitude" type="text" />
             </div>
             <div className="item">
               <label htmlFor="longitude">Longitude</label>
               <input id="longitude" name="longitude" type="text" />
-            </div>
+            </div>*/}
             <div className="item">
               <label htmlFor="category">Product Category</label>
               <select name="category" defaultValue="">
