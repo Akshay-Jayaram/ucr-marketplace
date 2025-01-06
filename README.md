@@ -26,20 +26,16 @@ UCRMarketplace is a full-stack marketplace application designed for the Universi
 ## Screenshots
 
 #### Home Page
-<img width="1710" alt="Screenshot 2025-01-05 at 9 30 42 PM" src="https://github.com/user-attachments/assets/88f30c52-4723-470c-aff1-bdc6f34c1c8e" />
+<img width="1710" alt="Screenshot 2025-01-06 at 1 58 55 PM" src="https://github.com/user-attachments/assets/2e02da1f-89c5-4a3b-ab2a-5b41f103173a" />
 
 ---
 #### Profile Page
-<img width="1710" alt="Screenshot 2025-01-05 at 9 31 18 PM" src="https://github.com/user-attachments/assets/802f3276-fc05-4723-b348-3b18a6b1f6a7" />
-
----
-#### Home Page
-<img width="1710" alt="Screenshot 2025-01-05 at 9 30 42 PM" src="https://github.com/user-attachments/assets/88f30c52-4723-470c-aff1-bdc6f34c1c8e" />
+<img width="1710" alt="Screenshot 2025-01-06 at 2 08 12 PM" src="https://github.com/user-attachments/assets/7efd4280-c99e-48ad-90a1-8f8ab1ac349f" />
 
 ---
 
 #### Item Listings Page
-<img width="1710" alt="Screenshot 2025-01-05 at 9 31 39 PM" src="https://github.com/user-attachments/assets/319c9fbc-db1c-4aee-ab42-13278de92b21" />
+<img width="1710" alt="Screenshot 2025-01-06 at 2 10 09 PM" src="https://github.com/user-attachments/assets/7a81aa2c-2d06-4944-aad8-6b92b9db956d" />
 
 ---
 #### Item Details Page
@@ -47,7 +43,7 @@ UCRMarketplace is a full-stack marketplace application designed for the Universi
 
 ---
 #### Real-Time Chat
-<img width="526" alt="Screenshot 2025-01-05 at 9 33 39 PM" src="https://github.com/user-attachments/assets/082a9d30-2a21-41cc-95bb-ec86c201be49" />
+<img width="425" alt="Screenshot 2025-01-06 at 2 08 57 PM" src="https://github.com/user-attachments/assets/71730467-1ccd-4424-a58d-d7a177d4f137" />
 
 
 
