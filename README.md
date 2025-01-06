@@ -39,12 +39,13 @@ UCRMarketplace is a full-stack marketplace application designed for the Universi
 
 ---
 #### Item Details Page
-<img width="1710" alt="Screenshot 2025-01-05 at 9 32 10 PM" src="https://github.com/user-attachments/assets/1b41b673-d9fb-43f7-a1c1-00b99ff2480a" />
+<img width="1710" alt="Screenshot 2025-01-06 at 2 05 25 PM" src="https://github.com/user-attachments/assets/e8312aa7-f3f6-4d77-83ca-b075148d25c9" />
 
 ---
 #### Real-Time Chat
-<img width="425" alt="Screenshot 2025-01-06 at 2 08 57 PM" src="https://github.com/user-attachments/assets/71730467-1ccd-4424-a58d-d7a177d4f137" />
-
+<div align="center">
+<img width="325" alt="Screenshot 2025-01-06 at 2 08 57 PM" src="https://github.com/user-attachments/assets/71730467-1ccd-4424-a58d-d7a177d4f137" />
+</div>
 
 
 ## Commands
