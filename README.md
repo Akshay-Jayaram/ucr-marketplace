@@ -1,0 +1,90 @@
+# UCR Marketplace
+
+![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Next.js](https://img.shields.io/badge/react-%2361DAFB.svg?style=for-the-badge&logo=react&logoColor=black)
+![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
+![AWS](https://img.shields.io/badge/mongodb-%2347A248.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+![AWS](https://img.shields.io/badge/socket.io-%23010101.svg?style=for-the-badge&logo=socketdotio&logoColor=white)
+<br/>
+![AWS](https://img.shields.io/badge/AWS-%23232F3E.svg?style=for-the-badge&logo=amazonwebservices&logoColor=white) :
+![AWS](https://img.shields.io/badge/route53-%238C4FFF.svg?style=for-the-badge&logo=amazonroute53&logoColor=white)
+![AWS](https://img.shields.io/badge/s3-%23569A31.svg?style=for-the-badge&logo=amazons3&logoColor=white)
+![AWS](https://img.shields.io/badge/CLOUDFRONT-%237D4F9E.svg?style=for-the-badge&logo=&logoColor=white)
+![AWS](https://img.shields.io/badge/ec2-%23FF9900.svg?style=for-the-badge&logo=amazonec2&logoColor=white)
+![AWS](https://img.shields.io/badge/aSG-%238C4FFF.svg?style=for-the-badge&logo=awselasticloadbalancing&logoColor=white)
+
+UCRMarketplace is a full-stack marketplace application designed for the University of California, Riverside (UCR) community. The platform connects over 26,000 students, providing a secure and responsive space to buy, sell, and trade goods. 
+
+## Features
+
+- **User Authentication**: Secure user accounts with JWT-based authentication.
+- **Real-Time Chat**: Instant communication with buyers/sellers using `Socket.io`.
+- **Scalable Backend**: RESTful APIs built with `Express.js`.
+- **Responsive Design**: Optimized for desktop and mobile with SCSS.
+- **High Availability**: Deployed on AWS with 99.9% uptime.
+
+## Screenshots
+
+#### Home Page
+<img width="1710" alt="Screenshot 2025-01-05 at 9 30 42 PM" src="https://github.com/user-attachments/assets/88f30c52-4723-470c-aff1-bdc6f34c1c8e" />
+
+---
+#### Profile Page
+<img width="1710" alt="Screenshot 2025-01-05 at 9 31 18 PM" src="https://github.com/user-attachments/assets/802f3276-fc05-4723-b348-3b18a6b1f6a7" />
+
+---
+#### Home Page
+<img width="1710" alt="Screenshot 2025-01-05 at 9 30 42 PM" src="https://github.com/user-attachments/assets/88f30c52-4723-470c-aff1-bdc6f34c1c8e" />
+
+---
+
+#### Item Listings Page
+<img width="1710" alt="Screenshot 2025-01-05 at 9 31 39 PM" src="https://github.com/user-attachments/assets/319c9fbc-db1c-4aee-ab42-13278de92b21" />
+
+---
+#### Item Details Page
+<img width="1710" alt="Screenshot 2025-01-05 at 9 32 10 PM" src="https://github.com/user-attachments/assets/1b41b673-d9fb-43f7-a1c1-00b99ff2480a" />
+
+---
+#### Real-Time Chat
+<img width="526" alt="Screenshot 2025-01-05 at 9 33 39 PM" src="https://github.com/user-attachments/assets/082a9d30-2a21-41cc-95bb-ec86c201be49" />
+
+
+
+## Commands
+
+### Dependencies
+
+```bash
+# Install dependencies
+npm i
+
+# Add dependency
+npm i <dependency>
+
+# Remove dependency
+npm un <dependency>
+```
+
+### Running the Website Locally
+
+```bash
+# Open a browser at localhost
+npm run dev
+```
+### Running the Servers Locally
+
+```bash
+# Navigate to the api folder
+node app.js
+
+# Navigate to the socket folder
+node app.js
+```
+
+
+### Build the Website
+
+```bash
+npm run build
+```
