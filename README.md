@@ -23,6 +23,10 @@ UCRMarketplace is a full-stack marketplace application designed for the Universi
 - **Responsive Design**: Optimized for desktop and mobile with SCSS.
 - **High Availability**: Deployed on AWS with 99.9% uptime.
 
+## Architecture Diagram
+
+![UCRMarketplace-arch](https://github.com/user-attachments/assets/3e97f53d-5484-4f92-9bae-43d1f362aeda)
+
 ## Screenshots
 
 #### Home Page
